@@ -1,0 +1,719 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type">
+    <title></title>
+    <meta name="csrf-token" content="">
+    <meta name="keywords" content="" />
+    <meta name="description" content="我在矩作创作的长页作品,速来围观!">
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta name="author" content="恒益九州">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        document.domain = "hy9z.com";
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 360;
+                document.write('<meta name="viewport" content="width=360, initial-scale=' + phoneScale +
+                    ', minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale +
+                    ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=360, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=360, user-scalable=no">');
+        }
+        if (typeof window.wView !== "undefined") {
+            window.wView.allowsInlineMediaPlayback = "YES";
+            window.wView.mediaPlaybackRequiresUserAction = "NO";
+        }
+
+        window.history.pushState({},0, location.href.replace('#f0', ''));
+        var _pre = location.host.split('.')[0].replace('kf', '').slice(0, 3);
+        window.mapPrefix = _pre.length == 1 ? '' : ('/' + _pre);
+
+        
+    </script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <style>
+
+        html, body {
+          width: 100vw;
+          /*overflow-x: hidden;
+          overflow-y: scroll;*/
+        }
+
+        /*html {
+          overflow-y: scroll;
+        }
+
+        :root {
+          overflow-y: auto;
+          overflow-x: hidden;
+        }
+
+        :root body {
+          position: absolute;
+          left: 50%;
+            margin-left: -180px!important;
+        }
+
+        body {
+          width: 100vw;
+          overflow-x: hidden;
+        }*/
+
+        
+         ::-webkit-scrollbar {
+            width: 0;
+        }
+
+        select {
+            outline: none;
+        }
+
+        
+        #pageWrap {
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .justifyWord:after {
+            display: inline-block;
+            content: '';
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            line-height: 0;
+        }
+        
+        #pageWrap img {
+            display: block;
+            position: relative;
+        }
+        
+        .cube {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        
+        .createGs {
+            width: 360px;
+            height: 2rem;
+            line-height: 2rem;
+            background: rgba(255, 255, 255, .8);
+            color: #000;
+            position: fixed;
+            z-index: 999999;
+            bottom: 0;
+            left: 50%;
+            font-size: .8rem;
+            text-align: center;
+            transform: translateX(-50%);
+        }
+        
+        .createGs a {
+            display: inline-block;
+            padding-left: 5px;
+            color: #1580eb;
+        }
+        
+        .bgBox-0 {
+            background-repeat: repeat!important;
+            background-position: top left!important;
+        }
+        
+        .bgBox-1 {
+            background-position: center center!important;
+            background-repeat: no-repeat!important;
+            background-size: cover!important;
+        }
+        
+        .bgBox-2 {
+            background-position: center center!important;
+            background-repeat: no-repeat!important;
+            background-size: contain!important;
+        }
+
+        .rotateM{
+            animation: rotateM 4s linear infinite;
+        }
+        @keyframes  rotateM{
+            from {
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        @-webkit-keyframes rotateM{
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+            to{
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        .music{
+            width:30px;height:30px;position:fixed;right:20px;top:20px;z-index:999999999;background:url(/Home/sce_h5/img/music.png) no-repeat;background-size:cover
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .pagination {
+            position: absolute;
+            bottom: 12px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .pagination.textSwitch {
+            bottom: 40px;
+        }
+
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 3px;
+            border-radius: 2px;
+            background-color: rgba(255, 255, 255, .5);
+            margin: 0 4px;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #fff;
+        }
+
+        .swiper-slide {
+            width: 100%;
+            height: calc(100%);
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .swiper-slide.textSwitch {
+            margin: 0 18px; 
+            border-radius: 2px;
+            height: calc(100% - 30px);
+            width: calc(100% - 36px)!important;
+        }
+
+        .swiper-slide.textSwitch div {
+            border-radius: 2px;
+        }
+
+        .drop_down_sj {
+            position: absolute;
+            right: 8px;
+            width: 0;
+            height: 0;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            border-bottom: 0;
+        }
+
+        .dw-i {
+            font-size: 16px;
+            line-height: 36px;
+        }
+
+        .mbsc-ios .dwbc {border-bottom-color: #e1e1e1;}
+        .mbsc-ios .dwb {
+            color: #999;
+            font-size: 16px;
+        }
+
+        .mbsc-ios .dwb-s .dwb {
+            font-weight: normal;
+            color: #33cccc;
+        }
+
+        /*选择地区弹层*/
+        .express-area-box { position: fixed; bottom: -100%; left: 50%; z-index: 100000000; width: 320px; margin-left: -160px; background-color: #fff; color: #4d525d; }
+        .express-area-box header { position: relative; border-top: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; }
+        .express-area-box header h3 { margin: 0 1.675rem; text-align: center; font-size: 1rem; line-height: 2.5rem; font-weight: normal;}
+        .express-area-box header .back,
+        .express-area-box header .close { position: absolute; top: 0; width: 1.675rem; height: 2.25rem; }
+        .express-area-box header .back { display: none; left: 0; background: url(/Home/img/back1.png) no-repeat center;   background-size: .45rem .75rem; }
+        .express-area-box header .close { right: 0.3px; background: url(/Home/img/preClose.png) no-repeat center; background-size: 1rem 1rem; }
+        .express-area-box article { height: 250px; overflow-y: scroll; }
+        .area-list li { padding: .5rem; border-bottom: 1px solid #e2e2e2; text-align: justify; font-size: 0.85rem; line-height: 1.25rem; }
+        @media (min-width: 721px) and (max-width: 1300px) {
+            .express-area-box { width: 224px; margin-left: -112px; }
+            .express-area-box header h3 { font-size: .7rem; line-height: 1.7rem; }
+            .express-area-box header .back,
+            .express-area-box header .close { height: 1.7rem; }
+            .express-area-box article { height: 120px; }
+            .area-list li { padding: .3rem; font-size: .6rem; line-height: 1.5rem; }
+        }
+        @media (max-width: 720px) {
+            .express-area-box { position: fixed; left: 0; width: 100%; margin-left: 0; }
+        }
+        /*遮罩层*/
+        .mask { display: none; position: fixed; top: 0; left: 0; z-index: 10000000; width: 100%; height: 100%; background-color: rgba(0,0,0,.5); }
+        @media (max-width: 720px) {
+            .mask { position: fixed; }
+        }
+    </style>
+    <script type="text/javascript">
+        (function(t) {
+            for (var o = -1 !== t.indexOf(String.fromCharCode(108, 111, 99, 97, 108, 104, 111, 115, 116)), n = [String.fromCharCode(104, 121, 57, 122, 46, 99, 111, 109)], e = n.length; - 1 < --e;)
+                if (-1 !== t.indexOf(n[e])) return !0;
+            return o
+        })(window ? window.location.host : "") || ((window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP")).abort(), window.attachEvent && !window.opera ? document.execCommand("stop") : window.stop());
+    </script>
+</head>
+
+<body id="allmap" style="background-color:#fff;width:360px;margin:0 auto;
+        " class="bgBox-0">
+    <div id="copyPage">
+        <div id="pageWrap" style="width:360px;height:6554px;min-height: 100vh;">
+                        <style>
+                * {
+                    padding: 0;
+                    margin: 0;
+                    box-sizing: content-box;
+                }
+                
+                li {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                
+                a {
+                    text-decoration: none;
+                }
+            </style>
+                                             <div id="p10040" class="cube" style="
+                    width:360px;
+                    height:2116.8px;
+                    max-height: 6554px;
+                    top:0px;
+                                        position:absolute;
+                    z-index:10040;
+                    left:0px;
+                                        opacity:1;transform:rotate(0deg);-webkit-transform:rotate(0deg);">
+                    <div style="
+                                                    width: 360px;
+                            position:relative; 
+                            left: 0px;
+                                                max-height: 6554px;overflow: hidden;">
+                        <div style="width: 360px; height: 2116.8px;">
+                            <img src="https://source.huigoufang.com/5c9208ad69683.jpg" style="width:100%;height:100%;border-radius:0px;" /> 
+                             
+                                                    </div>
+                    </div>
+                </div>
+                                                            <div id="p10042" class="cube" style="
+                    width:360px;
+                    height:2116.8px;
+                    max-height: 4437.2px;
+                    top:2116.8px;
+                                        position:absolute;
+                    z-index:10042;
+                    left:0px;
+                                        opacity:1;transform:rotate(0deg);-webkit-transform:rotate(0deg);">
+                    <div style="
+                                                    width: 360px;
+                            position:relative; 
+                            left: 0px;
+                                                max-height: 4437.2px;overflow: hidden;">
+                        <div style="width: 360px; height: 2116.8px;">
+                            <img src="https://source.huigoufang.com/5c9208b356cd0.jpg" style="width:100%;height:100%;border-radius:0px;" /> 
+                             
+                                                    </div>
+                    </div>
+                </div>
+                                                            <div id="p10044" class="cube" style="
+                    width:360px;
+                    height:2116.8px;
+                    max-height: 2320.4px;
+                    top:4233.6px;
+                                        position:absolute;
+                    z-index:10044;
+                    left:0px;
+                                        opacity:1;transform:rotate(0deg);-webkit-transform:rotate(0deg);">
+                    <div style="
+                                                    width: 360px;
+                            position:relative; 
+                            left: 0px;
+                                                max-height: 2320.4px;overflow: hidden;">
+                        <div style="width: 360px; height: 2116.8px;">
+                            <img src="https://source.huigoufang.com/5c9208b84c09b.jpg" style="width:100%;height:100%;border-radius:0px;" /> 
+                             
+                                                    </div>
+                    </div>
+                </div>
+                                             <div class="chip" style="width:360px;position:fixed;bottom:0;left:50%;margin-left:-180px;height:40px;z-index:999999;">
+                                <div style="width:50%;float:left;height:44px;line-height:44px;text-align:center;background:#ff741d;color:#ffffff;font-size:14px;">
+                                                            <a href="#f0" class="sale_appoint" style="display:block;width:100%;height:100%;color:#ffffff;">
+                                                                            预约看房
+                                                                            </a>                 </div>
+                    
+                                 <div style="width:50%;float:left;height:44px;line-height:44px;text-align:center;background:#f0302f;color:#ffffff;font-size:14px;">
+                                                            <a href="tel:4008806371"  class="sale_tel" style="display:block;width:100%;height:100%;color:#ffffff;">
+                                                                            一键拨打
+                                                                            </a>                 </div>
+                    
+                             </div>
+                
+
+              
+                                               <div id="f0" style="
+                    position:absolute;
+                    width:300px;
+                    height:autopx;
+                    max-height: 184px;
+                    left:29px;
+                    top:6370px;
+                    z-index:10018;
+                    background: ;
+                    font-family:Microsoft YaHei;" class="cube">
+                    <div style="
+                                                    width: 300px;
+                                                max-height: 184px;overflow: hidden;">
+                        <div style="width: 300px; height: autopx;">
+                                                            <div style="width:100%;height:100%;overflow:hidden;">
+                                    <form id="form_f0">
+                                                                                 <div style="width:90%;height:30px;padding:5px 0;margin:0 auto;position:relative;">
+                                            <span style="display: block;position: absolute;right: -13px;top: 10px;color: #ff0000;">
+                                                                                                            </span>
+                                            <input style="
+                                                        width:100%;
+                                                        height:28px;
+                                                        border:1px solid #666666;
+                                                        background:#ffffff;
+                                                        color: #333333;
+                                                        font-size: 12px;
+                                                        font-style: normal;
+                                                        font-weight: normal;
+                                                        text-align:left;
+                                                        border-radius:4px;
+                                                        padding:0 3%;
+                                                        box-sizing: border-box;
+                                                        "  class="formItem sale_name"  type="text" name="dat_name" value="" />
+                                            <div class="formItem_title" style="position: absolute; left: calc(3% + 2px); top: 5px;font-size:14px;color:#333333;height: 30px; line-height: 30px; overflow: hidden;font-weight:normal; font-style:normal;">姓名</div>
+                                        </div>
+                                                                                  <div style="width:90%;height:30px;padding:5px 0;margin:0 auto;position:relative;">
+                                            <span style="display: block;position: absolute;right: -13px;top: 10px;color: #ff0000;">
+                                                                                                                *
+                                                                                                            </span>
+                                            <input style="
+                                                        width:100%;
+                                                        height:28px;
+                                                        border:1px solid #666666;
+                                                        background:#ffffff;
+                                                        color: #333333;
+                                                        font-size: 12px;
+                                                        font-style: normal;
+                                                        font-weight: normal;
+                                                        text-align:left;
+                                                        border-radius:4px;
+                                                        padding:0 3%;
+                                                        box-sizing: border-box;
+                                                        "  class="formItem sale_phone"  type="text" name="dat_tel" value="" />
+                                            <div class="formItem_title" style="position: absolute; left: calc(3% + 2px); top: 5px;font-size:14px;color:#333333;height: 30px; line-height: 30px; overflow: hidden;font-weight:normal; font-style:normal;">电话</div>
+                                        </div>
+                                                                                 <div style="width:90%;height:30px;padding:5px 0;margin:0 auto;">
+                                            <div id="submint-f0" class="sale_appointSubmit" style="width:94%;height:30px;line-height:30px;border:1px solid #f3695e;background:#f3695e;color:#ffffff;text-align:center;border-radius:4px;padding:0 3%;cursor:pointer;">预约看房</div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <script>
+
+                                    var client_h = document.compatMode == "BackCompat" ? document.body.clientHeight : document.documentElement.clientHeight;   // 浏览器可视部分高度 
+                                    $(window).on("resize", function() {
+                                        var target = this;
+                                        var _client_h = document.compatMode == "BackCompat" ? document.body.clientHeight : document.documentElement.clientHeight;   // 浏览器可视部分高度 
+                                        var body_h = document.compatMode == "BackCompat" ? document.body.scrollHeight : Math.max(document.documentElement.scrollHeight, document.documentElement.clientHeight);                // 浏览器所有内容高度
+
+                                        if (client_h > _client_h + 100) {
+                                            $('.chip').css({'position': 'absolute'});
+                                            $(window).scrollTop($("form").offset().top);
+                                            $('#areaLayer').hide();
+                                        } else {
+                                            $('.chip').css({'position': 'fixed'});
+                                            $('#areaLayer').show();
+                                        }
+                                        $('body').height(client_h);
+
+                                    });
+
+                                    $('.formItem').focus(function(){
+                                        $(this).siblings('.formItem_title').hide();
+                                    }).blur(function(){
+                                        if (!$(this).val()) $(this).siblings('.formItem_title').show();
+                                    });
+
+                                    $('.formItemS').click(function(){
+                                        $(this).css('opacity', $(this).find('option:selected').val() ? 1 : 0);
+                                    }).blur(function(){
+                                        $(this).css('opacity', $(this).find('option:selected').val() ? 1 : 0);
+                                    }).change(function(){
+                                        $(this).css('opacity', $(this).find('option:selected').val() ? 1 : 0);
+                                    });
+
+                                    var submitBloon = false;
+                                    $("#submint-f0").click(function(){
+                                        if (submitBloon) {
+                                            alert("表单不得重复提交");
+                                            return;
+                                        }
+                                        var Json = {
+                                            data: {}
+                                        };
+                                        var Json1 = {};
+                                        var form = document.getElementById('form_f0');
+                                        var formData = new FormData(form);
+                                        formData.append('tpl_id', 25928);
+                                        Json['tpl_id'] = 25928;
+
+                                                                                                                            Json.data['dat_name'] = $('#form_f0 input[name="dat_name"]').val();
+                                                                                                                                                                                                                                                            Json.data['dat_tel'] = $('#form_f0 input[name="dat_tel"]').val();
+                                                                                        var fild_valtel = $('#form_f0 input[name="dat_tel"]').val();
+                                            if (fild_valtel == '') {
+                                                alert("电话字段不能为空");
+                                                return;
+                                            }
+                                                                                                                                    var exp = /^1\d{10}$|^(0\d{2,3}-?|\(0\d{2,3}\))?[1-9]\d{4,7}(-\d{1,8})?$|^[48]00\d{7}$/;
+                                            var dat_tel = $('#form_f0 input[name="dat_tel"]').val();
+                                            if (!exp.test(dat_tel)) {
+                                                alert('请输入正确的电话号码!');
+                                                return;
+                                            }
+                                                                                                                                                                    var isContinue = true;
+                                        $('.reg_IDnumbers').each(function(){
+                                            var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+                                            if (!reg.test($(this).val())) {
+                                                isContinue = false;
+                                                alert('请输入正确的身份证号');
+                                            }
+                                        });
+
+                                        $('.reg_email').each(function(){
+                                            var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+                                            if (!reg.test($(this).val())) {
+                                                isContinue = false;
+                                                alert('请输入正确的邮箱');
+                                            }
+                                        });
+                                        if (!isContinue) {
+                                            return;
+                                        }
+                                        fingerprint();
+                                        var timer = setInterval(function() {
+                                            if (typeof fingerprint == 'string' && fingerprint) {
+                                                Json['fingerprint'] = fingerprint;
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    headers: {
+                                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                    },
+                                                    url: 'https://' + (location.host.indexOf('kf') === 0 ? 'kf' : '') + 'c.hy9z.com/api/V2/set_input_data',
+                                                    data: Json,
+                                                    success: function(result) {
+                                                        if (result.code == 0) {
+                                                            submitBloon = true;
+                                                            alert("提交成功,感谢参与!");
+                                                        } else {
+                                                            alert("提交失败,请重新提交!");
+                                                        }
+                                                    },
+                                                    error: function(res) {
+                                                        alert("提交失败,请重新提交!");
+                                                    }
+                                                });
+                                                clearInterval(timer);
+                                            }
+                                        }, 10);
+
+                                    });
+                                </script>
+                                                        </div>
+                    </div>
+                </div>
+                             
+                                                </div>
+        <!-- 选择地区弹层， data-type  0：省市区， 1：省市， 2： 省 -->
+        <section id="areaLayer" class="express-area-box" data-type="0">
+            <header>
+                <h3>选择地区</h3>
+                <a id="backUp" class="back" href="javascript:void(0)" title="返回"></a>
+                <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
+            </header>
+            <article id="areaBox">
+                <ul id="areaList" class="area-list"></ul>
+            </article>
+        </section>
+        <!--遮罩层-->
+        <div id="areaMask" class="mask"></div>
+        <div style="display:none">
+            <script type="text/javascript">
+                var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                document.write(unescape("%3Cspan id='cnzz_stat_icon_1264525270'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1264525270%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+        </div>
+    </div>
+    <script>
+        (function() {
+            var d = document,
+                g = d.createElement('script'),
+                s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.defer = true;
+            g.src = "https://" + (location.host.indexOf('kf') === 0 ? 'kf' : '') + "cdn.hy9z.com/js/9605.js";
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+
+    <script>
+        var abc = window.location.href.replace(/&/g, '@!@');
+        $.get("https://" + (location.host.indexOf('kf') === 0 ? 'kf' : '') + 'c.hy9z.com/api/getWxShareSign?current_url=' + abc, function(data) {
+            var data = data.data;
+            wx.config({
+                debug: false,
+                appId: data.appId,
+                timestamp: data.timestamp,
+                nonceStr: data.nonceStr,
+                signature: data.signature,
+                jsApiList: [
+                    'checkJsApi',
+                    'onMenuShareTimeline',
+                    'onMenuShareAppMessage',
+                    'onMenuShareQQ',
+                    'onMenuShareWeibo',
+                    'hideMenuItems',
+                    'showMenuItems',
+                    'hideAllNonBaseMenuItem',
+                    'showAllNonBaseMenuItem',
+                    'translateVoice',
+                    'startRecord',
+                    'stopRecord',
+                    'onRecordEnd',
+                    'playVoice',
+                    'pauseVoice',
+                    'stopVoice',
+                    'uploadVoice',
+                    'downloadVoice',
+                    'chooseImage',
+                    'previewImage',
+                    'uploadImage',
+                    'downloadImage',
+                    'getNetworkType',
+                    'openLocation',
+                    'getLocation',
+                    'hideOptionMenu',
+                    'showOptionMenu',
+                    'closeWindow',
+                    'scanQRCode',
+                    'chooseWXPay',
+                    'openProductSpecificView',
+                    'addCard',
+                    'chooseCard',
+                    'openCard'
+                ]
+            });
+            wx.ready(function() {
+                //分享给朋友
+                wx.onMenuShareAppMessage({
+                    title: '', // 分享标题
+                    desc: '我在矩作创作的长页作品,速来围观!', // 分享描述
+                    link: data.url, // 分享链接
+                    imgUrl: 'https://source.huigoufang.com/5a38849db7f52.jpg', // 分享图标
+                    type: '', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function() {
+
+                    },
+                    cancel: function() {
+
+                    }
+                });
+                //分享到朋友圈
+                wx.onMenuShareTimeline({
+                    title: '', // 分享标题
+                    link: data.url, // 分享链接
+                    imgUrl: 'https://source.huigoufang.com/5a38849db7f52.jpg', // 分享图标
+                    success: function() {
+
+                    },
+                    cancel: function() {
+
+                    }
+                });
+                //分享到Q
+                wx.onMenuShareQQ({
+                    title: '', // 分享标题
+                    desc: '我在矩作创作的长页作品,速来围观!', // 分享描述
+                    link: data.url, // 分享链接
+                    imgUrl: 'https://source.huigoufang.com/5a38849db7f52.jpg', // 分享图标
+                    success: function() {
+
+                    },
+                    cancel: function() {
+
+                    }
+                });
+                //分享到腾讯微博
+                wx.onMenuShareWeibo({
+                    title: '', // 分享标题
+                    desc: '我在矩作创作的长页作品,速来围观!', // 分享描述
+                    link: data.url, // 分享链接
+                    imgUrl: 'https://source.huigoufang.com/5a38849db7f52.jpg', // 分享图标
+                    success: function() {
+
+                    },
+                    cancel: function() {
+
+                    }
+                });
+                //分享到QQ空间
+                wx.onMenuShareQZone({
+                    title: '', // 分享标题
+                    desc: '我在矩作创作的长页作品,速来围观!', // 分享描述
+                    link: data.url, // 分享链接
+                    imgUrl: 'https://source.huigoufang.com/5a38849db7f52.jpg', // 分享图标
+                    success: function() {
+
+                    },
+                    cancel: function() {
+
+                    }
+                });
+            })
+        })
+    </script>
+
+    <script>
+        (function() {
+            var d = document,
+                g = d.createElement('script'),
+                s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.defer = true;
+            g.src = 'https://' + (location.host.indexOf('kf') === 0 ? 'kf' : '') + 'cdn.hy9z.com/js/fp2.js';
+            s.parentNode.insertBefore(g, s);
+            g.onload = g.onreadystatechange = function() {
+                HY9ZDL();
+            }
+        })();
+    </script>
+</body>
+
+</html>
